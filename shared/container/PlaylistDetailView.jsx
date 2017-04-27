@@ -23,9 +23,10 @@ class PlaylistDetailView extends Component {
   // }
 
   render() {
+    console.log('render playlist detail view');
     return (
       <div>
-        <Header onClick={function noop() {}} handleLogoClick={this.handleLogoClick}/>
+        <Header/>
         <div className="container">
           <div className="single-post post-detail">
             <h3 className="playlist-name">{this.props.playlist.name}</h3>

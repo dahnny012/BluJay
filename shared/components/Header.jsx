@@ -6,11 +6,11 @@ function Header(props, context) {
     <div className="header">
       <div className="header-content">
         <h1 className="site-title">
-          <Link to="/" onClick={props.handleLogoClick}>BluJay on MERN</Link>
+          <Link to="/">BluJay on MERN</Link>
         </h1>
         {
           context.router.isActive('/', true)
-            ? <a className="add-playlist-button" href="#" onClick={props.onClick}>Add Playlist</a>
+            ? <a className="add-playlist-button" href="#">Add Playlist (removed onclick action)</a>
             : null
         }
       </div>

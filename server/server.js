@@ -8,26 +8,35 @@ import path from 'path';
 // Webpack Requirements
 import webpack from 'webpack';
 import config from '../webpack.config.dev';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
+
+
+process.on('uncaughtException', function(err) {
+  console.log(err.stack);
+  throw err;
+});
 
 // Initialize the Express App
 const app = new Express();
 
+if (process.env.NODE_ENV !== 'production') {
+  console.log("not prod");
+  const compiler = webpack(config);
+}
 
 import { configureStore } from '../shared/redux/store/configureStore';
-//import { renderToString } from 'react/lib/ReactDOMServer';
+import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import { Provider } from 'react-redux';
+import { Router, Route, IndexRoute, browserHistory,hashHistory, StaticRouter } from 'react-router'
 import { React } from 'react';
 
 
 // Import required modules
-require("node-jsx").install();
 import routes from '../shared/routes';
 import { fetchComponentData } from './utils/fetchData';
 import playlists from './routes/playlists.routes';
 import serverConfig from './config';
+import App from '../shared/container/App';
 
 import dummyData from './dummyData';
 
@@ -69,7 +78,6 @@ const renderFullPage = (html, initialState) => {
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
-        <script src="/dist/bundle.js"></script>
       </body>
     </html>
     `; //webpack bundles generated js files to /dist/bundle.js
@@ -81,28 +89,6 @@ const renderError = err => {
     `:<br><br><pre style="color:red">${softTab}${err.stack.replace(/\n/g, `<br>${softTab}`)}</pre>` : '';
   return renderFullPage(`Server Error${errTrace}`, {});
 };
-
-
-
-var ReactDOMContainerInfo = require('react/lib/ReactDOMContainerInfo');
-var ReactDefaultBatchingStrategy = require('react/lib/ReactDefaultBatchingStrategy');
-var ReactElement = require('react/lib/ReactElement');
-var ReactMarkupChecksum = require('react/lib/ReactMarkupChecksum');
-var ReactServerBatchingStrategy = require('react/lib/ReactServerBatchingStrategy');
-var ReactServerRenderingTransaction = require('react/lib/ReactServerRenderingTransaction');
-var ReactUpdates = require('react/lib/ReactUpdates');
-
-//var emptyObject = require('fbjs/lib/emptyObject');
-var instantiateReactComponent = require('react/lib/instantiateReactComponent');
-//var invariant = require('fbjs/lib/invariant');
-
-/**
- * @param {ReactElement} element
- * @return {string} the HTML markup
- */
-function renderToString(element) {
-  return 1;
-}
 
 // Server-side rendering 
 app.use( (req, res, next) => {
@@ -125,16 +111,29 @@ app.use( (req, res, next) => {
         console.log('gonna fetchComponentData');
         return fetchComponentData(store, renderProps.components, renderProps.params)
           .then( () => {
-              //lol anonymous functions
               console.log("fetched component data");
-              const initialView = renderToString(
-                    <div></div>
-                  );
-              console.log("lol.");
+              //lol anonymous functions
+              debugger;
+              var initialView;
+              try {
+              initialView = renderToString(
+                        <Provider store={store}>
+              
+              <RouterContext {...renderProps}/>
+              
+    </Provider> 
+              );
+              
+              } catch (e) {
+                console.log(e.stack);
+              }
+              
+              
               const finalState = store.getState();
-              console.log("final state gotten");
               res.status(200).end(renderFullPage(initialView, finalState));
-          });
+          },(e) => {
+              console.log(e.stack)
+          })
     });
 });
 

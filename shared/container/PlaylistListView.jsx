@@ -16,13 +16,13 @@ function PlaylistListView(props) {
 }
 
 //http://wecodetheweb.com/2015/06/02/why-react-proptypes-are-important/
-PlaylistListView.propTypes = {
-  playlists: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    //date added??
-    ownerID: PropTypes.string.isRequired,
-  })).isRequired,
-  dispatch: PropTypes.func.isRequired,
-};
+// PlaylistListView.propTypes = {
+//   playlists: PropTypes.arrayOf(PropTypes.shape({
+//     name: PropTypes.string.isRequired,
+//     //date added??
+//     ownerID: PropTypes.string.isRequired,
+//   })).isRequired,
+//   dispatch: PropTypes.func.isRequired,
+// };
 
 export default connect()(PlaylistListView);

@@ -7,7 +7,7 @@ const playlistSchema = new Schema({
     dateAdded: { type: 'Date', default: Date.now, required: true },
     name: { type: 'String', required: true },
     ownerID: { type: 'String' },
-    songs : [Song]
+    songs :[{type: mongoose.Schema.Types.ObjectId, ref: 'Song'}]
 });
 
 export default mongoose.model('Playlist', playlistSchema);

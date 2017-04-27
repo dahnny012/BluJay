@@ -15,7 +15,7 @@ export function fetchComponentData(store, components, params) {
  * Throw an array to it and a function which can generate promises
  * and it will call them sequentially, one after another
  */
-function sequence(items, consumer) {
+export function sequence(items, consumer) {
   const results = [];
   const runner = () => {
     const item = items.shift();

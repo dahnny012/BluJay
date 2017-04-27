@@ -4,6 +4,7 @@ import * as ActionTypes from '../actionTypes';
 const initialState = { playlists : [], playlist : null };
 
 const playlistReducer = (state = initialState, action) => {
+    console.log('playlistReducer called');
     switch (action.type) {
         
         case ActionTypes.ADD_PLAYLIST:
@@ -26,6 +27,7 @@ const playlistReducer = (state = initialState, action) => {
             };
         
         default:
+            console.log('hit default case ...: ' + action.type);
             return state;
     }
 };

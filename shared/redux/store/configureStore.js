@@ -8,8 +8,8 @@ export function configureStore(initialState = {}) {
   let enhancerClient;
   if (process.env.CLIENT) {
     enhancerClient = compose(
-      applyMiddleware(thunk),
-      window.devToolsExtension ? window.devToolsExtension() : null
+      applyMiddleware(thunk)
+      //window.devToolsExtension ? window.devToolsExtension() : null
       );
   }
 

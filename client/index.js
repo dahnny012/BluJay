@@ -1,4 +1,4 @@
-import React from 'react';
+import { React } from 'react';
 import routes from '../shared/routes';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -11,11 +11,10 @@ const dest = document.getElementById('root');
 
 let toRender;
 
-if (process.env.CLIENT && !window.devToolsExtension) {
+if (process.env.CLIENT) {
   toRender = (<Provider store={store}>
                 <div>
                   <Router history={history} routes={routes} />
-                  <DevTools />
                 </div>
               </Provider>);
 } else {

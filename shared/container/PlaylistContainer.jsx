@@ -10,9 +10,9 @@ class PlaylistContainer extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            showAddPlaylist : false //figure out wtf this is for
+            showAddPlaylist : true //figure out wtf this is for
         };
-        this.handleClick = this.handleClick.bind(this);
+        //this.handleClick = this.handleClick.bind(this);
         //this.add = this.add.bind(this);
     }
     
@@ -28,15 +28,18 @@ class PlaylistContainer extends Component {
     
     componentDidMount() {
         if(this.props.playlists.length === 0) {
+            console.log('componentDidMount() in playlistcontainer');
             this.props.dispatch(Actions.fetchPlaylists());
         }
     }
     
     render() {
+        console.log('render playlistcontainer');
         return (
             <div>
                 <Header />
                 <div className="container">
+                    <div> lol </div>
                     <PlaylistListView playlists={this.props.playlists} />
                 </div>
                 <Footer />
