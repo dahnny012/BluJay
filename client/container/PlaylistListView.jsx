@@ -1,14 +1,18 @@
 import React, { PropTypes } from 'react';
-//import PostListItem from '../../components/PostListItem/PostListItem';
-import { connect } from 'react-redux';
 import * as Actions from '../redux/actions/actions';
 
 function PlaylistListView(props) {
   return (
-    <div className="listView">
+    <div classNameName="listView">
       {
         props.playlists.map((playlist, i) => (
-          <h1> Playlist {playlist.name} --- {playlist.dateAdded} </h1>
+      
+        <div className="list-group">
+          <a href="#" className="list-group-item active">
+            <h4 className="list-group-item-heading">{playlist.name} </h4>
+            <p className="list-group-item-text"> {playlist.dateAdded}</p>
+          </a>
+        </div>
         ))
       }
     </div>
@@ -25,4 +29,4 @@ function PlaylistListView(props) {
 //   dispatch: PropTypes.func.isRequired,
 // };
 
-export default connect()(PlaylistListView);
+export default PlaylistListView

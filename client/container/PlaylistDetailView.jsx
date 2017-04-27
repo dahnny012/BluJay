@@ -8,22 +8,9 @@ class PlaylistDetailView extends Component {
 
   constructor(props, context) {
     super(props, context);
-    //this.handleClick = this.handleClick.bind(this);
-    //this.handleLogoClick = this.handleLogoClick.bind(this);
   }
 
-  // handleClick() {
-  //   this.setState({
-  //     showAddPost: true,
-  //   });
-  // }
-
-  // handleLogoClick() {
-  //   this.props.dispatch(Actions.fetchPosts());
-  // }
-
   render() {
-    console.log('render playlist detail view');
     return (
       <div>
         <Header/>

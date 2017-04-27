@@ -1,16 +1,16 @@
 var webpack = require('webpack');
 
 module.exports = {
-  //devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
 
-  entry: ['webpack-hot-middleware/client',
-          './client/index.js',
+  entry: [
+          './client/index.js'
   ],
 
   output: {
-    path: __dirname + '/dist/',
+    path: __dirname + '/static/',
     filename: 'bundle.js',
-    publicPath: '/dist/',
+    publicPath: '/static/',
   },
 
   resolve: {
@@ -18,24 +18,31 @@ module.exports = {
   },
 
   module: {
+    rules: [
+      {
+        test: /\.js/,
+        use: ["source-map-loader"],
+        enforce: "pre"
+      }
+    ],
+    
     loaders: [
       {
         test: /\.css$/,
         loader: 'style!css?modules',
       },
       {
-        test: /\.js*$/,
+        test: /\.js/,
         exclude: [/node_modules/, /.+\.config.js/],
         loader: 'babel',
         query: {
-          presets: ['react-hmre'],
+          presets: ['react', 'es2015'],
         },
       },
     ],
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         CLIENT: JSON.stringify(true)

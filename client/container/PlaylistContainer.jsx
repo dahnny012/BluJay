@@ -1,8 +1,5 @@
 import React, { PropTypes, Component } from 'react';
 import PlaylistListView from './PlaylistListView';
-//import PostCreateView from '../../components/PostCreateView/PostCreateView';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import { connect } from 'react-redux';
 import * as Actions from '../redux/actions/actions';
 
@@ -34,15 +31,11 @@ class PlaylistContainer extends Component {
     }
     
     render() {
-        console.log('render playlistcontainer');
         return (
             <div>
-                <Header />
                 <div className="container">
-                    <div> lol </div>
                     <PlaylistListView playlists={this.props.playlists} />
                 </div>
-                <Footer />
             </div>
         );
     }
@@ -57,7 +50,7 @@ PlaylistContainer.contextTypes = {
 
 function mapStateToProps(store) {
     return {
-        posts: store.posts
+        playlists: store.playlists
     };
 }
 

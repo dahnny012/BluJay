@@ -1,0 +1,8 @@
+.footer-bottom{
+    padding-top:15px;
+    padding-bottom:15px;
+    position:absolute;
+    bottom:0;
+    background: grey;
+    width:100%;
+}
