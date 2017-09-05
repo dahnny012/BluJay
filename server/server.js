@@ -44,6 +44,8 @@ app.use(Express.static(path.resolve(__dirname, '../static')));
 app.use('/api', playlists);
 app.use('/', home);
 
+
+
 /*
 const renderError = err => {
   const softTab = '&#32;&#32;&#32;&#32;';

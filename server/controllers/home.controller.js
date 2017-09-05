@@ -32,7 +32,7 @@ export function index(req, res) {
     // serve bundle
     
     //Initial State, modify this later
-    const initialState = { playlists: [], playlist : {}};
+    const initialState = { playlists: {} };
       
     res.status(200).end(renderFullPage(initialState));
     

@@ -17,6 +17,11 @@ class PlaylistDetailView extends Component {
         <div className="container">
           <div className="single-post post-detail">
             <h3 className="playlist-name">{this.props.playlist.name}</h3>
+            <ul>
+              {this.props.playlist.songs.map(item => {
+                return (<li>{item}</li>)
+              })}
+            </ul>
           </div>
         </div>
         <Footer />
@@ -25,28 +30,4 @@ class PlaylistDetailView extends Component {
   }
 }
 
-PlaylistDetailView.need = [(params) => {
-  return Actions.getPlaylistRequest.bind(null, params.slug)();
-}];
-
-PlaylistDetailView.contextTypes = {
-  router: React.PropTypes.object,
-};
-
-// PlaylistDetailView.propTypes = {
-//   playlist: PropTypes.shape({
-//     name: PropTypes.string.isRequired,
-//     //date added??
-//     ownerID: PropTypes.string.isRequired,
-//     slug: PropTypes.string.isRequired,
-//   }).isRequired,
-//   dispatch: PropTypes.func.isRequired,
-// };
-
-function mapStateToProps(store) {
-  return {
-    post: (store.post),
-  };
-}
-
-export default connect(mapStateToProps)(PlaylistDetailView);
+export default PlaylistDetailView

@@ -14,9 +14,24 @@ export function fetchPlaylists() {
     };
 }
 
+export function fetchPlaylist(id) {
+    return (dispatch) => {
+        return fetch(`${baseURL}/api/getPlaylist/${id}`).
+            then((response) => response.json()).
+            then((response) => dispatch(addPlaylist(response.playlist)));
+    };
+}
+
 export function addPlaylists(playlists) {
     return {
         type : ActionTypes.ADD_PLAYLISTS,
         playlists
+    };
+}
+
+export function addPlaylist(playlist) {
+    return {
+        type : ActionTypes.ADD_PLAYLIST,
+        playlist
     };
 }

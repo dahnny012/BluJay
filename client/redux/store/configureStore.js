@@ -2,9 +2,9 @@
 
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import rootReducer from '../reducers/reducer';
+import playlist from '../reducers/playlist';
 
-export function configureStore(initialState = {}) {
+export function configureStore(initialState = {playlist: {} }) {
   let enhancerClient;
   if (process.env.CLIENT) {
     enhancerClient = compose(
@@ -19,18 +19,16 @@ export function configureStore(initialState = {}) {
   let store;
 
   if (process.env.CLIENT) {
-    store = createStore(rootReducer, initialState, enhancerClient);
-  } else {
-    store = createStore(rootReducer, initialState, enhancerServer);
+    store = createStore(playlist, initialState, enhancerClient);
   }
 
-  if (module.hot) {
+  /*if (module.hot) {
     // Enable Webpack hot module replacement for reducers
     module.hot.accept('../reducers/reducer', () => {
       const nextReducer = require('../reducers/reducer').default;
       store.replaceReducer(nextReducer);
     });
-  }
+  }*/
 
   return store;
 }

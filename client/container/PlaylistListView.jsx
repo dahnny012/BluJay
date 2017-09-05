@@ -3,7 +3,7 @@ import * as Actions from '../redux/actions/actions';
 
 function PlaylistListView(props) {
   return (
-    <div classNameName="listView">
+    <div className="listView">
       {
         props.playlists.map((playlist, i) => (
       

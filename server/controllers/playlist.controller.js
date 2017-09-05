@@ -17,8 +17,7 @@ export function getPlaylists(req, res) {
 
 //get one playlist
 export function getPlaylist(req, res) {
-    const newSlug = req.query.slug.split('-');
-    const newCuid = newSlug[newSlug.length - 1];
+    const newCuid = req.params.id
     
     Playlist.findOne({ cuid : newCuid }).exec((err, playlist) => {
         if(err) {

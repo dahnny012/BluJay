@@ -3,14 +3,16 @@
 import { Route, IndexRoute } from 'react-router';
 import React from 'react';
 import App from './container/App';
-import PlaylistContainer from './container/PlaylistContainer';
-import PlaylistDetailView from './container/PlaylistDetailView';
+import PlaylistContainer from './container/PlaylistContainer';  
+import PlaylistDetailViewContainer from './container/PlaylistDetailViewContainer';
+import Foo from './components/Foo';
 
 //map each route --> container + view
 const routes = (
-  <Route path="/" component={App} >
-    <IndexRoute component={PlaylistContainer} />
-    <Route path="/playlist/:slug" component={PlaylistDetailView} />
+  <Route path="/">
+    <IndexRoute component={App} />
+    <Route path="playlist/:slug" component={PlaylistDetailViewContainer} />
+    <Route path="foo" component={Foo} />
   </Route>
   
 );

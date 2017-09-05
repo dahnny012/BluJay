@@ -6,7 +6,7 @@ const router = new Router();
 router.route('/getPlaylists').get(PlaylistController.getPlaylists);
 
 //Get one playlist by cuid
-router.route('/getPlaylist').get(PlaylistController.getPlaylist);
+router.route('/getPlaylist/:id').get(PlaylistController.getPlaylist);
 
 
 //TODO: CRUD all playlists
