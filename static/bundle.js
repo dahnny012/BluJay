@@ -12317,7 +12317,7 @@
 	        playlists.push(_jsx('div', {
 	          className: 'list-group'
 	        }, void 0, _jsx('a', {
-	          href: '#',
+	          href: '/playlist/' + k,
 	          className: 'list-group-item active'
 	        }, void 0, _jsx('h4', {
 	          className: 'list-group-item-heading'

@@ -10,7 +10,7 @@ function PlaylistListView(props) {
         var playlist = props.playlists[k];
         playlists.push((
             <div className="list-group">
-              <a href="#" className="list-group-item active">
+              <a href={'/playlist/' + k} className="list-group-item active">
                 <h4 className="list-group-item-heading">{playlist.name} </h4>
                 <p className="list-group-item-text"> {playlist.dateAdded}</p>
               </a>

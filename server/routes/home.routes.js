@@ -4,6 +4,8 @@ const router = new Router();
 
 //Get all playlists
 router.route('/').get(HomeController.index);
+router.route('/playlist/*').get(HomeController.index);
+
 
 //TODO: CRUD all playlists
 
