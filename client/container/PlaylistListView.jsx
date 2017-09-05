@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import * as Actions from '../redux/actions/actions';
+import { Link } from 'react-router'
 
 function PlaylistListView(props) {
   if(Object.keys(props.playlists).length === 0){
@@ -10,10 +11,13 @@ function PlaylistListView(props) {
         var playlist = props.playlists[k];
         playlists.push((
             <div className="list-group">
-              <a href={'/playlist/' + k} className="list-group-item active">
+              <Link to={'/playlist/' + k}>
+              <span className="list-group-item active">
+                
                 <h4 className="list-group-item-heading">{playlist.name} </h4>
                 <p className="list-group-item-text"> {playlist.dateAdded}</p>
-              </a>
+              </span>
+              </Link>
             </div>
         ));
     }

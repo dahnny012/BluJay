@@ -12294,6 +12294,8 @@
 	
 	var Actions = _interopRequireWildcard(_actions);
 	
+	var _reactRouter = __webpack_require__(39);
+	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -12316,14 +12318,15 @@
 	        var playlist = props.playlists[k];
 	        playlists.push(_jsx('div', {
 	          className: 'list-group'
-	        }, void 0, _jsx('a', {
-	          href: '/playlist/' + k,
+	        }, void 0, _jsx(_reactRouter.Link, {
+	          to: '/playlist/' + k
+	        }, void 0, _jsx('span', {
 	          className: 'list-group-item active'
 	        }, void 0, _jsx('h4', {
 	          className: 'list-group-item-heading'
 	        }, void 0, playlist.name, ' '), _jsx('p', {
 	          className: 'list-group-item-text'
-	        }, void 0, ' ', playlist.dateAdded))));
+	        }, void 0, ' ', playlist.dateAdded)))));
 	      }
 	    } catch (err) {
 	      _didIteratorError = true;
