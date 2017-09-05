@@ -2,11 +2,11 @@ import { React } from 'react';
 import routes from './routes';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, hashHistory } from 'react-router';
+import { Router, browserHistory } from 'react-router';
 import { configureStore } from './redux/store/configureStore';
 
 const store = configureStore(window.__INITIAL_STATE__);
-const history = hashHistory;
+const history = browserHistory;
 const dest = document.getElementById('root');
 
 let toRender;

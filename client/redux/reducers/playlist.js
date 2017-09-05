@@ -15,6 +15,15 @@ const playlist = (state = initialState, action) => {
                 }, 
                     ...state.playlists
             };
+        case ActionTypes.ADD_PLAYLISTS:
+            var playlists = {};
+            action.playlists.forEach(playlist => {
+                playlists[playlist.cuid] = playlist;
+            })
+            return {
+                playlists : playlists, 
+                    ...state.playlists
+            };
         default:
             console.log('hit default case ...: ' + action.type);
             return state;

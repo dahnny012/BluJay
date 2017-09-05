@@ -23,8 +23,8 @@ class PlaylistContainer extends Component {
     
     //add(name, title, blah)
     
-    componentDidMount() {
-        if(this.props.playlists.length === 0) {
+    componentWillMount() {
+        if(Object.keys(this.props.playlists).length === 0){
             console.log('componentDidMount() in playlistcontainer');
             this.props.dispatch(Actions.fetchPlaylists());
         }
